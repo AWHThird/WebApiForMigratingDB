@@ -1,6 +1,8 @@
-﻿using System;
+﻿using WebApiForMigratingDB.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,16 @@ namespace WebApiForMigratingDB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+            var config = builder.Build();
+
+            services.AddTransient<IEmployeeProcessor>(f =>
+                // new EmployeeProcessor(config["ConnectionString:DapperWebApiDB"]));
+                new EmployeeProcessor(
+                    GetServerName()
+                    )
+                );
         }
 
         private String GetServerName()
