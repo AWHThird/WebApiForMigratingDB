@@ -43,7 +43,7 @@ namespace WebApiForMigratingDB
         private String GetServerName()
         {
             String serverName = Configuration.GetValue<string>("ConnectionString:ServerName");
-            String dbConnectionString = $"Persist Security Info = False; Integrated Security = true; Initial Catalog = DapperWebApi; server = {serverName};";
+            String dbConnectionString = $"Persist Security Info = False; Integrated Security = true; Initial Catalog = MigratingDB; server = {serverName};";
 
             return dbConnectionString;
         }
