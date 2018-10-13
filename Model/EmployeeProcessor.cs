@@ -1,3 +1,6 @@
+using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,6 +18,12 @@ namespace WebApiForMigratingDB.Model
         public IEnumerable<Employee> GetEmployees()
         {
             IEnumerable<Employee> employee = null;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                employee = connection.Query<Employee>("spGetEmployees",
+                    commandType: CommandType.StoredProcedure);
+            }
 
             return employee;
         }
