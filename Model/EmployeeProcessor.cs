@@ -38,7 +38,7 @@ namespace WebApiForMigratingDB.Model
 
         }
 
-        public void DeleteEmployee(Employee employee)
+        public void DeleteEmployee(int employeeId)
         {
 
         }
