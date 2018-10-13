@@ -13,6 +13,6 @@ namespace WebApiForMigratingDB.Model
         public string CellPhone { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool Employed { get; set; }
+        public bool IsEmployed { get; set; }
     }
 }
