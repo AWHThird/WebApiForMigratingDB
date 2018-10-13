@@ -8,6 +8,6 @@ namespace WebApiForMigratingDB.Model
         IEnumerable<Employee> GetEmployees();
         void CreateEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
-        void DeleteEmployee(Employee employee);
+        void DeleteEmployee(int employeeId);
     }
 }
